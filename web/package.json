@@ -15,5 +15,12 @@
   "bugs": {
     "url": "https://github.com/dnflwlq3231/FOUNDERS_3th_Group-6/issues"
   },
-  "homepage": "https://github.com/dnflwlq3231/FOUNDERS_3th_Group-6#readme"
+  "homepage": "https://github.com/dnflwlq3231/FOUNDERS_3th_Group-6#readme",
+  "dependencies": {
+    "ejs": "^3.0.1",
+    "express": "^4.17.1",
+    "express-session": "^1.17.0",
+    "path": "^0.12.7",
+    "web3": "^1.2.6"
+  }
 }
