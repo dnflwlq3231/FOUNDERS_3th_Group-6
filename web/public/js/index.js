@@ -88,6 +88,18 @@ if (typeof web3 !== 'undefined') {
         let value = $('#choices__inner').val();
         console.log('got data')
         console.log(value);
+
+        $.ajax({
+            url: "/history",
+            type: "POST",
+            data: value,
+            success: function (result) {
+                if(result.msg == "success") {
+                    console.log('post success')
+                }
+            }
+        })
+
         let result = listContractInstance.postData
             .sendTransaction(value, {from: account}, function (err, res) {
                 if (err) {
@@ -95,7 +107,9 @@ if (typeof web3 !== 'undefined') {
                 } else {
                     console.log(res);
                 }
+                alert('업로드가 성공했습니다. Transaction : ' + res);
             });
+        
     })    
 } else {
     $(function () {

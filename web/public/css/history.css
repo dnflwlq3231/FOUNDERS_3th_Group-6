@@ -15,6 +15,10 @@ body {
   background: #009688;
   font-size: 16px;
   overflow: hidden;
+  display: block;
+  position: relative;
+  top: 14%;
+  left: 19%;
 }
 
 *,
@@ -24,19 +28,21 @@ body {
 }
 
 .content {
-  position: relative;
+  margin: 30px;
+  /* transform: translate(-50%, -50%); */
   animation: animatop 0.9s cubic-bezier(0.425, 1.14, 0.47, 1.125) forwards;
 }
 
 .card {
-  width: 500px;
+  width: 1100px;
   height: 80px;
-  padding: 20px;
   border-radius: 3px;
   background-color: white;
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
   position: relative;
   overflow: hidden;
+  display: block;
+
 }
 .card:after {
   content: "";
@@ -98,8 +104,11 @@ body {
 }
 .txHash {
     position: relative;
-    top: -20px;
-    left: 10px;
+    top: 24px;
+    left: 6px;
+    font-family: "Open Sans", sans-serif;
+    font-size: 25px;
+    font-weight: 800;
 }
 
 @keyframes animatop {

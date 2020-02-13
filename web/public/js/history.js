@@ -82,22 +82,34 @@ if (typeof web3 !== 'undefined') {
     ethereum.enable();
 
     $(document).ready(function() {
-        // var receipt = web3.eth
-        // .getTransactionReceipt('0x97093982f611ab49233f6afcfc3084463a49fbfa81de5997f1a906075016e603', function (err, res) {
-        //     if (err) {
-        //         console.log(err)
-        //     } else {
-        //         console.log(res)
-        //         console.log(typeof res.blockHash)
-        //         }
-        // })
+        
+        // getTransactionReceipt
+        var receipt = web3.eth
+        .getTransactionReceipt('0x97093982f611ab49233f6afcfc3084463a49fbfa81de5997f1a906075016e603', function (err, res) {
+            if (err) {
+                console.log(err)
+            } else {    
+                    $('body').prepend(
+                        `<div class="content" style="display:block">
+                          <div class="card">
+                            <div class="firstinfo">
+                              <div class="profileinfo">
+                                <div class='txHash'>` + res.transactionHash + `</div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div style="clear:both"></div>`
+                    );
+                console.log(res.transactionHash)
+                }
+        })
 
         // 등록된 환자 array length 
         const count = listContractInstance.getPostCount.call((err, res) => {
             if (err) {
                 console.log(err)
             } else {
-                console.log(res.c[0])
             }
         })
 
