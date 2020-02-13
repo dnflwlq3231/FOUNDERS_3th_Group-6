@@ -8,8 +8,6 @@ const endPoint = url + '/v1/rpc';
 const web3 = new Web3(endPoint);
 const port = 3000;
 const indexRouter = require('./routes/index');
-//const submitRouter = require('./routes/submit');
-//const historyRouter = require('./routes/history');
 const app = express();
 
 //view engine setup
@@ -27,11 +25,9 @@ app.use(session({
     cookie: { secure: false },
   }))
 
-app.set('web3', web3);
-
 app.use('/', indexRouter); //login = main
-//app.use('/submit', submitRouter);
-//app.use('/history', historyRouter);
+
+app.use(express.static('./css'))
 
 app.listen(port, () => console.log('spermBank web is running'))
 

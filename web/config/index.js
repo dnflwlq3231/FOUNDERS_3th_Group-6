@@ -1,4 +1,4 @@
-const ABI = [
+const tokenABI = [
 	{
 		"anonymous": false,
 		"inputs": [
@@ -117,37 +117,6 @@ const ABI = [
 		"type": "event"
 	},
 	{
-		"constant": false,
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "_from",
-				"type": "address"
-			},
-			{
-				"internalType": "address",
-				"name": "_to",
-				"type": "address"
-			},
-			{
-				"internalType": "uint256",
-				"name": "_value",
-				"type": "uint256"
-			}
-		],
-		"name": "transferFrom",
-		"outputs": [
-			{
-				"internalType": "bool",
-				"name": "success",
-				"type": "bool"
-			}
-		],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
 		"constant": true,
 		"inputs": [
 			{
@@ -166,6 +135,27 @@ const ABI = [
 			{
 				"internalType": "uint256",
 				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "userAddress",
+				"type": "address"
+			}
+		],
+		"name": "balance",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "balance",
 				"type": "uint256"
 			}
 		],
@@ -256,22 +246,104 @@ const ABI = [
 	}
 ]
 
+const listABI = [
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_lock",
+				"type": "string"
+			}
+		],
+		"name": "postData",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "index",
+				"type": "uint256"
+			}
+		],
+		"name": "getData",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "getPostCount",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "posts",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "lock",
+				"type": "string"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	}
+]
+
 const hexlantEndPoint = 'http://106.10.58.158:3000';
 
 const network = 'ropsten';
 
-const contAddress = '0x16bb104c6293c6109f36d40a77cc2dfb07b5cf07';
+const tokenAddress = '0x9949864e3e75e9691e9ef028fbbb366f215c9240';
+const listAddress = '0xc990b975e4d13db7ee76709c50772692c957e9ae';
 const adminAddress = '0x782F8853443AB778784DdF03D6835d7d068641F6';
 
 module.exports = {
     getHexlantEndPoint: () => {
         return hexlantEndPoint;
     },
-    getABI: () => {
-        return ABI;
-    },
-    getContAddress: () => {
-        return contAddress;
+    getTokenABI: () => {
+        return tokenABI;
+	},
+	getListABI: () => {
+		return listABI; 
+	},
+	getListAddress: () => {
+		return listAddress;
+	},
+    getTokenAddress: () => {
+        return tokenAddress;
     },
     getAdminAddress: () => {
         return adminAddress;

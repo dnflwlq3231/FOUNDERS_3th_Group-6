@@ -1,4 +1,4 @@
-pragma solidity 0.6.1;
+pragma solidity >=0.5.0 <0.6.2;
 
 import "./SafeMath.sol";
 
@@ -8,11 +8,10 @@ contract DappToken {
     
     string  public name = "Bee Token";
     string  public symbol = "BEE";
-    string  public standard = "Bee Token v1.0";
+    string  public standard = "Bee Token final v2";
     uint256 public totalSupply;
     
     address private publisher = 0x782F8853443AB778784DdF03D6835d7d068641F6;
-    address private beeContract = 0x0000000000000000000000000000000000000000;
 
     event Transfer(
         address indexed _from,
@@ -49,39 +48,14 @@ contract DappToken {
         return balanceOf[userAddress];
     }
     
-    function getToken(address userAddress) external {
-        require(msg.sender == userAddress);
-        require(balanceOf[userAddress] == 0);
-        require(balanceOf[beeContract] >= 50);
-        
-        balanceOf[beeContract] = balanceOf[beeContract].sub(50);
-        balanceOf[msg.sender] = balanceOf[msg.sender].add(50);
-    }
-    
     function transfer(address _to, uint256 _value) public returns (bool success) {
         require(balanceOf[msg.sender] >= _value);
-
-        balanceOf[msg.sender].sub(_value);
-        balanceOf[_to].add(_value);
+        
+        balanceOf[msg.sender] = balanceOf[msg.sender].sub(_value);
+        balanceOf[_to] =  balanceOf[_to].add(_value);
 
         emit Transfer(msg.sender, _to, _value);
 
         return true;
     }
-    
-    function transferFrom(address _from, address _to, uint256 _value) public returns (bool success) {
-        require(_value <= balanceOf[_from]);
-        require(_value <= allowance[_from][msg.sender]);
-
-        balanceOf[_from].sub(_value);
-        balanceOf[_to].add(_value);
-
-        allowance[_from][msg.sender].sub(_value);
-
-        emit Transfer(_from, _to, _value);
-
-        return true;
-    }
-    
-    
 }
