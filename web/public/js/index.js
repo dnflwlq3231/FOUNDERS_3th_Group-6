@@ -107,7 +107,7 @@ if (typeof web3 !== 'undefined') {
                 } else {
                     console.log(res);
                 }
-                alert('업로드가 성공했습니다. Transaction : ' + res);
+                alert('업로드가 성공했습니다.');
             });
         
     })    
